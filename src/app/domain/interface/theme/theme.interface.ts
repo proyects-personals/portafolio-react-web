@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 
 /**
  * @description Valor expuesto por el ThemeContext.
- * Contiene el tema actual, su nombre y la función para cambiarlo.
+ *
  * @author Steveen Cues
  * @version 1.0.0
  */
@@ -14,7 +14,8 @@ export interface ThemeContextValue {
 }
 
 /**
- * @description Props del ThemeProvider
+ * @description Props del ThemeProvider.
+ *
  * @author Steveen Cues
  * @version 1.0.0
  */
@@ -24,6 +25,7 @@ export interface ThemeProviderProps {
 
 /**
  * @description Representa un tema completo de la aplicación.
+ *
  * @author Steveen Cues
  * @version 1.0.0
  */

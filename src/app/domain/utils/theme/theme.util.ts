@@ -1,13 +1,16 @@
-import { darkTheme, lightTheme } from "@/assets";
-
-import { STORAGE_KEY } from "../../constants";
+import { STORAGE_KEY, THEME_NAMES, THEMES } from "../../constants";
+import { decryptTheme, encryptTheme } from "../theme-crypto";
 
 import type { AppTheme } from "../../interface";
 import type { ThemeName } from "../../type";
 
 /**
- * @description Detecta el tema preferido del sistema operativo.
- * @returns {ThemeName} Tema del sistema ("light" | "dark")
+ * @description Obtiene el tema del sistema operativo.
+ *
+ * @returns {ThemeName} Tema del sistema
+ *
+ * @author Steveen Cues
+ * @version 1.0.0
  */
 function getSystemTheme(): ThemeName {
   return window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -16,36 +19,96 @@ function getSystemTheme(): ThemeName {
 }
 
 /**
- * @description Obtiene el tema almacenado en localStorage si es válido.
- * @returns {ThemeName | null} Tema almacenado o null si no existe o es inválido
+ * @description Verifica si un valor corresponde a un tema registrado.
+ *
+ * @param {string} value Nombre del tema
+ * @returns {boolean} True cuando el tema existe
+ *
+ * @author Steveen Cues
+ * @version 1.0.0
  */
-function getStoredTheme(): ThemeName | null {
+export function isValidTheme(value: string): value is ThemeName {
+  return Object.hasOwn(THEMES, value);
+}
+
+/**
+ * @description Obtiene el tema almacenado y lo descifra.
+ *
+ * @returns {Promise<ThemeName | null>} Tema almacenado
+ *
+ * @author Steveen Cues
+ * @version 1.0.0
+ */
+export async function getStoredTheme(): Promise<ThemeName | null> {
   const storedTheme = localStorage.getItem(STORAGE_KEY);
 
-  if (storedTheme === "light" || storedTheme === "dark") {
-    return storedTheme;
+  if (storedTheme === null || storedTheme.length === 0) {
+    return null;
   }
 
-  return null;
+  const decryptedTheme = await decryptTheme(storedTheme);
+
+  if (
+    decryptedTheme === null ||
+    decryptedTheme.length === 0 ||
+    !isValidTheme(decryptedTheme)
+  ) {
+    return null;
+  }
+
+  return decryptedTheme;
 }
 
 /**
- * @description Resuelve el tema inicial de la aplicación.
- *              Prioridad:
- *              1. Tema almacenado en localStorage
- *              2. Tema del sistema operativo
+ * @description Persiste el tema seleccionado utilizando cifrado.
  *
- * @returns {ThemeName} Tema inicial
+ * @param {ThemeName} themeName Nombre del tema
+ * @returns {Promise<void>}
+ *
+ * @author Steveen Cues
+ * @version 1.0.0
  */
-export function resolveInitialTheme(): ThemeName {
-  return getStoredTheme() ?? getSystemTheme();
+export async function storeTheme(themeName: ThemeName): Promise<void> {
+  const encryptedTheme = await encryptTheme(themeName);
+
+  localStorage.setItem(STORAGE_KEY, encryptedTheme);
 }
 
 /**
- * @description Devuelve el objeto de tema correspondiente al nombre del tema.
+ * @description Resuelve el tema inicial.
+ *
+ * @returns {Promise<ThemeName>} Tema inicial
+ *
+ * @author Steveen Cues
+ * @version 1.0.0
+ */
+export async function resolveInitialTheme(): Promise<ThemeName> {
+  const storedTheme = await getStoredTheme();
+
+  return storedTheme ?? getSystemTheme();
+}
+
+/**
+ * @description Obtiene el objeto de configuración del tema.
+ *
  * @param {ThemeName} themeName Nombre del tema
- * @returns {AppTheme} Tema de la aplicación
+ * @returns {AppTheme} Configuración del tema
+ *
+ * @author Steveen Cues
+ * @version 1.0.0
  */
 export function resolveTheme(themeName: ThemeName): AppTheme {
-  return themeName === "dark" ? darkTheme : lightTheme;
+  return THEMES[themeName];
+}
+
+/**
+ * @description Obtiene todos los nombres de temas disponibles.
+ *
+ * @returns {ThemeName[]} Lista de temas
+ *
+ * @author Steveen Cues
+ * @version 1.0.0
+ */
+export function getAvailableThemes(): ThemeName[] {
+  return [...THEME_NAMES];
 }

@@ -15,11 +15,6 @@ export const ThemeContext = createContext<ThemeContextValue | null>(null);
  */
 export const STORAGE_KEY = "app_theme";
 
-/**
- * @description Identificador utilizado para derivar la clave de cifrado.
- */
-export const THEME_ENCRYPTION_KEY = "app-theme-storage-key";
-
 export const THEME_NAMES: ThemeName[] = [
   "light",
   "dark",

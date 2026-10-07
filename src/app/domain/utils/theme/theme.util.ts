@@ -1,5 +1,10 @@
-import { STORAGE_KEY, THEME_NAMES, THEMES } from "../../constants";
-import { decryptTheme, encryptTheme } from "../theme-crypto";
+import {
+  STORAGE_KEY,
+  THEME_ENCRYPTION_KEY,
+  THEME_NAMES,
+  THEMES,
+} from "../../constants";
+import { decrypt, encrypt } from "../crypto/crypto.util";
 
 import type { AppTheme } from "../../interface";
 import type { ThemeName } from "../../type";
@@ -46,7 +51,7 @@ export async function getStoredTheme(): Promise<ThemeName | null> {
     return null;
   }
 
-  const decryptedTheme = await decryptTheme(storedTheme);
+  const decryptedTheme = await decrypt(storedTheme, THEME_ENCRYPTION_KEY);
 
   if (
     decryptedTheme === null ||
@@ -69,7 +74,7 @@ export async function getStoredTheme(): Promise<ThemeName | null> {
  * @version 1.0.0
  */
 export async function storeTheme(themeName: ThemeName): Promise<void> {
-  const encryptedTheme = await encryptTheme(themeName);
+  const encryptedTheme = await encrypt(themeName, THEME_ENCRYPTION_KEY);
 
   localStorage.setItem(STORAGE_KEY, encryptedTheme);
 }
@@ -89,7 +94,7 @@ export async function resolveInitialTheme(): Promise<ThemeName> {
 }
 
 /**
- * @description Obtiene el objeto de configuración del tema.
+ * @description Obtiene la configuración del tema.
  *
  * @param {ThemeName} themeName Nombre del tema
  * @returns {AppTheme} Configuración del tema
@@ -102,7 +107,7 @@ export function resolveTheme(themeName: ThemeName): AppTheme {
 }
 
 /**
- * @description Obtiene todos los nombres de temas disponibles.
+ * @description Obtiene todos los temas disponibles.
  *
  * @returns {ThemeName[]} Lista de temas
  *

@@ -44,6 +44,12 @@ export default function App(): JSX.Element {
           >
             EN
           </button>
+          <button
+            onClick={() => changeTranslate("fr")}
+            className="px-4 py-2 rounded bg-white/20"
+          >
+            fr
+          </button>
         </div>
 
         {/* Tema */}

@@ -1,8 +1,9 @@
-import { THEME_ENCRYPTION_KEY } from "../constants";
-
 const HEX_RADIX = 16;
 const HEX_BYTE_LENGTH = 2;
 const AES_GCM_IV_LENGTH = 12;
+const AES_GCM_ALGORITHM = "AES-GCM";
+const SHA_256_ALGORITHM = "SHA-256";
+const RAW_KEY_FORMAT = "raw";
 
 /**
  * @description Convierte una cadena en bytes compatibles con Web Crypto.
@@ -25,13 +26,13 @@ function encode(value: string): Uint8Array<ArrayBuffer> {
 /**
  * @description Convierte bytes a una cadena hexadecimal.
  *
- * @param {Uint8Array} bytes Bytes a convertir
+ * @param {Uint8Array<ArrayBuffer>} bytes Bytes a convertir
  * @returns {string} Representación hexadecimal
  *
  * @author Steveen Cues
  * @version 1.0.0
  */
-function toHex(bytes: Uint8Array): string {
+function toHex(bytes: Uint8Array<ArrayBuffer>): string {
   return Array.from(bytes)
     .map((byte: number): string =>
       byte.toString(HEX_RADIX).padStart(HEX_BYTE_LENGTH, "0"),
@@ -65,22 +66,23 @@ function fromHex(hex: string): Uint8Array<ArrayBuffer> {
 /**
  * @description Genera una clave AES-GCM a partir de una clave base.
  *
+ * @param {string} encryptionKey Clave base de cifrado
  * @returns {Promise<CryptoKey>} Clave criptográfica
  *
  * @author Steveen Cues
  * @version 1.0.0
  */
-async function getEncryptionKey(): Promise<CryptoKey> {
+async function getEncryptionKey(encryptionKey: string): Promise<CryptoKey> {
   const keyMaterial = await crypto.subtle.digest(
-    "SHA-256",
-    encode(THEME_ENCRYPTION_KEY),
+    SHA_256_ALGORITHM,
+    encode(encryptionKey),
   );
 
   return crypto.subtle.importKey(
-    "raw",
+    RAW_KEY_FORMAT,
     keyMaterial,
     {
-      name: "AES-GCM",
+      name: AES_GCM_ALGORITHM,
     },
     false,
     ["encrypt", "decrypt"],
@@ -88,16 +90,20 @@ async function getEncryptionKey(): Promise<CryptoKey> {
 }
 
 /**
- * @description Cifra un valor utilizando AES-GCM.
+ * @description Cifra una cadena utilizando AES-GCM.
  *
  * @param {string} value Valor a cifrar
+ * @param {string} encryptionKey Clave base de cifrado
  * @returns {Promise<string>} Valor cifrado
  *
  * @author Steveen Cues
  * @version 1.0.0
  */
-export async function encryptTheme(value: string): Promise<string> {
-  const key = await getEncryptionKey();
+export async function encrypt(
+  value: string,
+  encryptionKey: string,
+): Promise<string> {
+  const key = await getEncryptionKey(encryptionKey);
 
   const initializationVector = crypto.getRandomValues(
     new Uint8Array(AES_GCM_IV_LENGTH),
@@ -105,7 +111,7 @@ export async function encryptTheme(value: string): Promise<string> {
 
   const encryptedValue = await crypto.subtle.encrypt(
     {
-      name: "AES-GCM",
+      name: AES_GCM_ALGORITHM,
       iv: initializationVector,
     },
     key,
@@ -118,30 +124,40 @@ export async function encryptTheme(value: string): Promise<string> {
 }
 
 /**
- * @description Descifra un valor previamente cifrado.
+ * @description Descifra una cadena previamente cifrada con AES-GCM.
  *
  * @param {string} value Valor cifrado
+ * @param {string} encryptionKey Clave base de cifrado
  * @returns {Promise<string | null>} Valor descifrado o null
  *
  * @author Steveen Cues
  * @version 1.0.0
  */
-export async function decryptTheme(value: string): Promise<string | null> {
+export async function decrypt(
+  value: string,
+  encryptionKey: string,
+): Promise<string | null> {
   try {
-    const [ivHex, encryptedHex] = value.split(":");
+    const parts = value.split(":");
 
-    if (!ivHex || !encryptedHex) {
+    if (parts.length !== HEX_BYTE_LENGTH) {
       return null;
     }
 
-    const key = await getEncryptionKey();
+    const [ivHex, encryptedHex] = parts;
+
+    if (ivHex.length === 0 || encryptedHex.length === 0) {
+      return null;
+    }
+
+    const key = await getEncryptionKey(encryptionKey);
 
     const initializationVector = fromHex(ivHex);
     const encryptedValue = fromHex(encryptedHex);
 
     const decryptedValue = await crypto.subtle.decrypt(
       {
-        name: "AES-GCM",
+        name: AES_GCM_ALGORITHM,
         iv: initializationVector,
       },
       key,

@@ -1,2 +1,3 @@
 export * from "./theme";
-export * from "./theme-crypto";
+export * from "./crypto";
+export * from "./lenguage";

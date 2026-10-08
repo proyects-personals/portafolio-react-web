@@ -51,9 +51,7 @@ export default function HeaderPreferenceOption<T extends string>({
         hover:opacity-80
       "
       style={{
-        backgroundColor: selected
-          ? theme.colors.brand.primary
-          : "transparent",
+        backgroundColor: selected ? theme.colors.brand.primary : "transparent",
         color: selected
           ? theme.colors.brand.primaryContrast
           : theme.colors.text.primary,

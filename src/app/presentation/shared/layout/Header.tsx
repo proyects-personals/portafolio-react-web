@@ -1,4 +1,10 @@
-import { HeaderActions, HeaderBrand, HeaderLanguage, HeaderNavigation, HeaderTheme } from "@presentation";
+import {
+  HeaderActions,
+  HeaderBrand,
+  HeaderLanguage,
+  HeaderNavigation,
+  HeaderTheme,
+} from "@presentation";
 import type { JSX } from "react";
 
 /**

@@ -1,7 +1,7 @@
 import { THEME_OPTIONS } from "@/app/domain";
 import { useTheme } from "@application";
 
-import {HeaderPreferenceSelect} from "@presentation";
+import { HeaderPreferenceSelect } from "@presentation";
 
 import type { JSX } from "react";
 

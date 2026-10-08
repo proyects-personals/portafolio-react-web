@@ -1,7 +1,11 @@
 import type { JSX } from "react";
 
 import { useLanguage, useTheme } from "@application";
-import { HeaderPreferenceOption, HeaderPreferenceSearch, type IHeaderPreferenceDropdownProps } from "@presentation";
+import {
+  HeaderPreferenceOption,
+  HeaderPreferenceSearch,
+  type IHeaderPreferenceDropdownProps,
+} from "@presentation";
 
 /**
  * @description Cantidad máxima de opciones antes de habilitar búsqueda.
@@ -63,24 +67,18 @@ export default function HeaderPreferenceDropdown<T extends string>({
       )}
 
       <div
-        className={
-          hasManyOptions
-            ? "max-h-60 overflow-y-auto p-1"
-            : "p-1"
-        }
+        className={hasManyOptions ? "max-h-60 overflow-y-auto p-1" : "p-1"}
         role="listbox"
       >
         {filteredOptions.length > 0 ? (
-          filteredOptions.map(
-            (option): JSX.Element => (
-              <HeaderPreferenceOption
-                key={option.value}
-                option={option}
-                selected={option.value === value}
-                onSelect={onSelect}
-              />
-            ),
-          )
+          filteredOptions.map((option): JSX.Element => (
+            <HeaderPreferenceOption
+              key={option.value}
+              option={option}
+              selected={option.value === value}
+              onSelect={onSelect}
+            />
+          ))
         ) : (
           <p
             className="px-3 py-6 text-center text-sm"

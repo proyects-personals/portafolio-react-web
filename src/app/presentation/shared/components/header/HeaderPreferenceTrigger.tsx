@@ -81,11 +81,7 @@ export default function HeaderPreferenceTrigger<T extends string>({
         viewBox="0 0 24 24"
         aria-hidden="true"
       >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="m6 9 6 6 6-6"
-        />
+        <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
       </svg>
     </button>
   );

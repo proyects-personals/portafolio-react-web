@@ -3,13 +3,17 @@ import {
   useMemo,
   useRef,
   useState,
-  type JSX, type ChangeEvent 
+  type JSX,
+  type ChangeEvent,
 } from "react";
 
 import { useClickOutside, useEscapeKey, useLanguage } from "@application";
 
-import { HeaderPreferenceDropdown, HeaderPreferenceTrigger, type HeaderPreferenceSelectProps } from "@presentation";
-
+import {
+  HeaderPreferenceDropdown,
+  HeaderPreferenceTrigger,
+  type HeaderPreferenceSelectProps,
+} from "@presentation";
 
 /**
  * @description Selector genérico de preferencias para el header.
@@ -41,10 +45,7 @@ export default function HeaderPreferenceSelect<T extends string>({
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   const selectedOption = useMemo(
-    () =>
-      options.find(
-        (option): boolean => option.value === value,
-      ),
+    () => options.find((option): boolean => option.value === value),
     [options, value],
   );
 
@@ -76,9 +77,7 @@ export default function HeaderPreferenceSelect<T extends string>({
     setIsOpen(true);
   };
 
-  const handleSearchChange = (
-    event: ChangeEvent<HTMLInputElement>,
-  ): void => {
+  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setSearch(event.target.value);
   };
 
@@ -87,21 +86,15 @@ export default function HeaderPreferenceSelect<T extends string>({
     closeSelector();
   };
 
-  const searchAriaLabel = t(
-    "header.preferences.search.ariaLabel",
-    {
-      preference: ariaLabel,
-    },
-  );
+  const searchAriaLabel = t("header.preferences.search.ariaLabel", {
+    preference: ariaLabel,
+  });
 
   useClickOutside(containerRef, closeSelector);
   useEscapeKey(closeSelector);
 
   return (
-    <div
-      ref={containerRef}
-      className="relative min-w-0"
-    >
+    <div ref={containerRef} className="relative min-w-0">
       <HeaderPreferenceTrigger
         value={value}
         selectedOption={selectedOption}

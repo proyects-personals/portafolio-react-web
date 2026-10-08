@@ -4,10 +4,9 @@ import {
   LANGUAGE_CODE_LENGTH,
   DEFAULT_LANGUAGE,
   LANGUAGE_ENCRYPTION_KEY,
-  type Language
+  type Language,
 } from "@domain";
 import { decrypt, encrypt } from "@application";
-
 
 /**
  * @description Verifica si un valor corresponde a un idioma soportado.

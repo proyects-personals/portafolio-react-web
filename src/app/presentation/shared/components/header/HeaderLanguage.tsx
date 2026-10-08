@@ -1,7 +1,7 @@
-import { LANGUAGE_OPTIONS } from "@/app/domain";
+import { LANGUAGE_OPTIONS } from "@domain";
 import { useLanguage } from "@application";
 
-import HeaderPreferenceSelect from "./HeaderPreferenceSelect";
+import { HeaderPreferenceSelect } from "@presentation";
 
 import type { JSX } from "react";
 

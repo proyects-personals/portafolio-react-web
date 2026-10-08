@@ -1,9 +1,4 @@
-import HeaderActions from "../components/header/HeaderActions";
-import HeaderBrand from "../components/header/HeaderBrand";
-import HeaderLanguage from "../components/header/HeaderLanguage";
-import HeaderNavigation from "../components/header/HeaderNavigation";
-import HeaderTheme from "../components/header/HeaderTheme";
-
+import { HeaderActions, HeaderBrand, HeaderLanguage, HeaderNavigation, HeaderTheme } from "@presentation";
 import type { JSX } from "react";
 
 /**

@@ -1,6 +1,6 @@
-import AppLayout from "./shared/layout/Layout";
 
 import type { JSX } from "react";
+import { AppLayout } from "@presentation";
 
 export default function App(): JSX.Element {
   return (

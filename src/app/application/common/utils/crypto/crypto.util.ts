@@ -1,9 +1,4 @@
-const HEX_RADIX = 16;
-const HEX_BYTE_LENGTH = 2;
-const AES_GCM_IV_LENGTH = 12;
-const AES_GCM_ALGORITHM = "AES-GCM";
-const SHA_256_ALGORITHM = "SHA-256";
-const RAW_KEY_FORMAT = "raw";
+import { AES_GCM_ALGORITHM, AES_GCM_IV_LENGTH, HEX_BYTE_LENGTH, HEX_RADIX, RAW_KEY_FORMAT, SHA_256_ALGORITHM } from "@domain";
 
 /**
  * @description Convierte una cadena en bytes compatibles con Web Crypto.

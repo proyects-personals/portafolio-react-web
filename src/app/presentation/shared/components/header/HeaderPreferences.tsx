@@ -1,5 +1,4 @@
-import HeaderLanguage from "./HeaderLanguage";
-import HeaderTheme from "./HeaderTheme";
+import { HeaderLanguage, HeaderTheme } from "@presentation";
 
 import type { JSX } from "react";
 

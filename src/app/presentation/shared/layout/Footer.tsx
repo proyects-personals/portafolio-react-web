@@ -1,6 +1,6 @@
 import { useLanguage, useTheme } from "@application";
 
-import { FooterBrand, FooterLinks, FooterSocials } from "../components";
+import { FooterBrand, FooterLinks, FooterSocials } from "@presentation";
 
 import type { JSX } from "react";
 

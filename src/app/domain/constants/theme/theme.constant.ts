@@ -1,13 +1,16 @@
 import { createContext } from "react";
 
-import { darkTheme } from "@/assets/styles/theme/dark.theme";
-import { lightTheme } from "@/assets/styles/theme/light.theme";
-import { magentaTheme } from "@/assets/styles/theme/magenta.theme";
-import { semiDarkTheme } from "@/assets/styles/theme/semi-dark.theme";
+import { darkTheme, lightTheme, magentaTheme, semiDarkTheme } from "@/assets";
 
-import type { AppTheme, ThemeContextValue } from "../../interface";
-import type { ThemeName } from "../../type";
+import type { AppTheme, ThemeContextValue, ThemeName } from "@domain";
 
+/**
+ * @file theme.constant
+ * @description Constantes relacionadas con la gestión de temas en la aplicación.
+ *
+ * @author Steveen Cues
+ * @version 1.0.0
+ */
 export const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 /**
@@ -15,6 +18,9 @@ export const ThemeContext = createContext<ThemeContextValue | null>(null);
  */
 export const STORAGE_KEY = "app_theme";
 
+/**
+ * @description Nombres de los temas disponibles en la aplicación.
+ */
 export const THEME_NAMES: ThemeName[] = [
   "light",
   "dark",
@@ -22,6 +28,9 @@ export const THEME_NAMES: ThemeName[] = [
   "semidark",
 ];
 
+/**
+ * @description Mapa de temas disponibles en la aplicación.
+ */
 export const THEMES: Record<ThemeName, AppTheme> = {
   light: lightTheme,
   dark: darkTheme,
@@ -29,6 +38,9 @@ export const THEMES: Record<ThemeName, AppTheme> = {
   semidark: semiDarkTheme,
 };
 
+/**
+ * @description Opciones de temas disponibles en la aplicación.
+ */
 export const THEME_OPTIONS = [
   {
     value: "light",

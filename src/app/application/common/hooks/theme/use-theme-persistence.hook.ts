@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 import { type ThemeName } from "@domain";
 
-import { storeTheme } from "../../utils";
+import { storeTheme } from "@application";
 
 /**
  * @description Persiste el tema seleccionado.

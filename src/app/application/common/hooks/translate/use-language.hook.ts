@@ -1,8 +1,8 @@
 import { useTranslation } from "react-i18next";
 
-import { useTranslateContext } from "./use-translate.hook";
+import { useTranslateContext } from "@application";
 
-import type { LanguageState } from "@/app/domain";
+import type { LanguageState } from "@domain";
 
 /**
  * @description Hook para obtener funciones y valores

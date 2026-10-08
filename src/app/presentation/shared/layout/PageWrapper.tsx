@@ -1,9 +1,5 @@
-import type { JSX, ReactNode } from "react";
-
-interface PageWrapperProps {
-  children: ReactNode;
-  className?: string;
-}
+import type { IPageWrapperProps } from "@presentation";
+import type { JSX } from "react";
 
 /**
  * @description Wrapper global responsive de la aplicación.
@@ -19,7 +15,7 @@ interface PageWrapperProps {
 export default function PageWrapper({
   children,
   className = "",
-}: PageWrapperProps): JSX.Element {
+}: IPageWrapperProps): JSX.Element {
   return (
     <div
       className={`

@@ -4,10 +4,10 @@ import {
   LANGUAGE_CODE_LENGTH,
   DEFAULT_LANGUAGE,
   LANGUAGE_ENCRYPTION_KEY,
-} from "../../constants";
+} from "../../../../domain/constants";
 import { decrypt, encrypt } from "../crypto/crypto.util";
 
-import type { Language } from "../../type";
+import type { Language } from "../../../../domain/type";
 
 /**
  * @description Verifica si un valor corresponde a un idioma soportado.

@@ -1,9 +1,8 @@
 import { useEffect, useState, type JSX } from "react";
 
+import { resolveInitialLanguage, storeLanguage } from "@/app/application";
 import i18n from "@assets/i18n";
 import {
-  resolveInitialLanguage,
-  storeLanguage,
   TranslateContext,
   type Language,
   type TranslateProviderProps,

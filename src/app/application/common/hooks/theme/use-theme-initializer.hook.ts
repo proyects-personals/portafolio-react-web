@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 
-import { resolveInitialTheme, type ThemeName } from "@domain";
+import { type ThemeName } from "@domain";
+
+import { resolveInitialTheme } from "../../utils";
 
 /**
  * @description Inicializa el tema desde el almacenamiento

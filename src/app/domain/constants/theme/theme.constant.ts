@@ -19,12 +19,39 @@ export const THEME_NAMES: ThemeName[] = [
   "light",
   "dark",
   "magenta",
-  "semi-dark",
+  "semidark",
 ];
 
 export const THEMES: Record<ThemeName, AppTheme> = {
   light: lightTheme,
   dark: darkTheme,
   magenta: magentaTheme,
-  "semi-dark": semiDarkTheme,
+  semidark: semiDarkTheme,
 };
+
+export const THEME_OPTIONS = [
+  {
+    value: "light",
+    label: "Light",
+    icon: "☀️",
+  },
+  {
+    value: "dark",
+    label: "Dark",
+    icon: "🌙",
+  },
+  {
+    value: "magenta",
+    label: "Magenta",
+    icon: "💗",
+  },
+  {
+    value: "semidark",
+    label: "Semi Dark",
+    icon: "◐",
+  },
+] satisfies ReadonlyArray<{
+  value: ThemeName;
+  label: string;
+  icon: string;
+}>;

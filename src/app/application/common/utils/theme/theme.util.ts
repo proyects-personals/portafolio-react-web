@@ -3,11 +3,11 @@ import {
   THEME_ENCRYPTION_KEY,
   THEME_NAMES,
   THEMES,
-} from "../../constants";
+} from "../../../../domain/constants";
 import { decrypt, encrypt } from "../crypto/crypto.util";
 
-import type { AppTheme } from "../../interface";
-import type { ThemeName } from "../../type";
+import type { AppTheme } from "../../../../domain/interface";
+import type { ThemeName } from "../../../../domain/type";
 
 /**
  * @description Obtiene el tema del sistema operativo.

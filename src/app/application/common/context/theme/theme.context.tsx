@@ -1,12 +1,12 @@
 import { useMemo, type JSX } from "react";
 
 import {
+  resolveTheme,
   useThemeInitializer,
   useThemePersistence,
   useThemeState,
 } from "@application";
 import {
-  resolveTheme,
   ThemeContext,
   type ThemeContextValue,
   type ThemeProviderProps,

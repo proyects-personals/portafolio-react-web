@@ -46,3 +46,21 @@ export const SUPPORTED_LANGUAGES: Language[] = [
 export const TranslateContext = createContext<TranslateContextType | undefined>(
   undefined,
 );
+
+export const LANGUAGE_OPTIONS = [
+  {
+    value: "es",
+    label: "Español",
+    icon: "🇪🇸",
+  },
+  {
+    value: "en",
+    label: "English",
+    icon: "🇺🇸",
+  },
+  {
+    value: "fr",
+    label: "Français",
+    icon: "🇫🇷",
+  },
+] as const;

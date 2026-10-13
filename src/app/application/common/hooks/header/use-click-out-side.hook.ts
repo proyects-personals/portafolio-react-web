@@ -1,18 +1,18 @@
-import { useEffect } from "react";
+import { useEffect, type RefObject } from "react";
 
 /**
  * @description Detecta clics realizados fuera del elemento referenciado.
  *
- * @param {React.RefObject<HTMLElement | null>} ref Referencia del elemento.
- * @param {() => void} onOutsideClick Callback ejecutado al hacer clic fuera.
+ * @param ref Referencia del elemento.
+ * @param onOutsideClick Callback ejecutado al hacer clic fuera.
  *
- * @returns {void}
+ * @returns void
  *
  * @author Steveen Cues
  * @version 1.0.0
  */
 export function useClickOutside(
-  ref: React.RefObject<HTMLElement | null>,
+  ref: RefObject<HTMLElement | null>,
   onOutsideClick: () => void,
 ): void {
   useEffect((): (() => void) => {

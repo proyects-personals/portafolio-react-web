@@ -1,13 +1,13 @@
-import type { JSX } from "react";
-
 import { useLanguage, useTheme } from "@application";
-import type { HeaderPreferenceSearchProps } from "@presentation";
+
+import type { IHeaderPreferenceSearchProps } from "@presentation";
+import type { CSSProperties, JSX } from "react";
 
 /**
  * @description Campo de búsqueda del selector de preferencias.
  *
- * @param {HeaderPreferenceSearchProps} props Propiedades del buscador.
- * @returns {JSX.Element} Campo de búsqueda.
+ * @param props Propiedades del buscador.
+ * @returns Campo de búsqueda.
  *
  * @author Steveen Cues
  * @version 1.0.0
@@ -17,17 +17,21 @@ export default function HeaderPreferenceSearch({
   inputRef,
   ariaLabel,
   onChange,
-}: HeaderPreferenceSearchProps): JSX.Element {
+}: IHeaderPreferenceSearchProps): JSX.Element {
   const { t } = useLanguage();
   const { theme } = useTheme();
 
+  const containerStyle: CSSProperties = {
+    borderColor: theme.colors.border.subtle,
+  };
+
+  const inputStyle: CSSProperties = {
+    borderColor: theme.colors.border.default,
+    color: theme.colors.text.primary,
+  };
+
   return (
-    <div
-      className="border-b p-2"
-      style={{
-        borderColor: theme.colors.border.subtle,
-      }}
-    >
+    <div className="border-b p-2" style={containerStyle}>
       <input
         ref={inputRef}
         type="search"
@@ -35,20 +39,10 @@ export default function HeaderPreferenceSearch({
         onChange={onChange}
         placeholder={t("header.preferences.search.placeholder")}
         className="
-          w-full
-          rounded-lg
-          border
-          bg-transparent
-          px-3
-          py-2
-          text-sm
-          outline-none
-          transition-colors
+          w-full rounded-lg border bg-transparent px-3 py-2
+          text-sm outline-none transition-colors
         "
-        style={{
-          borderColor: theme.colors.border.default,
-          color: theme.colors.text.primary,
-        }}
+        style={inputStyle}
         aria-label={t("header.preferences.search.ariaLabel", {
           preference: ariaLabel,
         })}

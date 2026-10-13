@@ -1,5 +1,4 @@
 import { useLanguage, useTheme } from "@application";
-
 import { ChevronIcon } from "@presentation";
 
 import type { JSX } from "react";

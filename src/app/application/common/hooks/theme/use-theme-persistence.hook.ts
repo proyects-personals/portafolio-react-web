@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 
-import { type ThemeName } from "@domain";
-
 import { storeTheme } from "@application";
+import { type ThemeName } from "@domain";
 
 /**
  * @description Persiste el tema seleccionado.

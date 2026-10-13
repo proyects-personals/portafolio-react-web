@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-import { darkTheme, lightTheme, magentaTheme, semiDarkTheme } from "@/assets";
+import { darkTheme, lightTheme, magentaTheme, semiDarkTheme } from "@assets";
 
 import type { AppTheme, ThemeContextValue, ThemeName } from "@domain";
 

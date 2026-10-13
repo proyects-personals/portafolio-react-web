@@ -1,7 +1,7 @@
-import type { JSX } from "react";
-
 import { useTheme } from "@application";
+
 import type { IHeaderPreferenceOptionProps } from "@presentation";
+import type { JSX } from "react";
 
 /**
  * @description Renderiza una opción individual del selector.

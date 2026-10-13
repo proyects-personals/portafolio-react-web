@@ -1,3 +1,4 @@
+import { decrypt, encrypt } from "@application";
 import {
   SUPPORTED_LANGUAGES,
   LANGUAGE_STORAGE_KEY,
@@ -6,7 +7,6 @@ import {
   LANGUAGE_ENCRYPTION_KEY,
   type Language,
 } from "@domain";
-import { decrypt, encrypt } from "@application";
 
 /**
  * @description Verifica si un valor corresponde a un idioma soportado.

@@ -1,11 +1,11 @@
-import type { JSX } from "react";
-
 import { useLanguage, useTheme } from "@application";
 import {
   HeaderPreferenceOption,
   HeaderPreferenceSearch,
   type IHeaderPreferenceDropdownProps,
 } from "@presentation";
+
+import type { JSX } from "react";
 
 /**
  * @description Cantidad máxima de opciones antes de habilitar búsqueda.

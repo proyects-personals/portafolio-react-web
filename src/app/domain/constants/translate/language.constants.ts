@@ -1,15 +1,6 @@
 import { createContext } from "react";
 
-import type { TranslateContextType } from "../../interface";
-import type { Language } from "../../type";
-
-/**
- * @description Clave utilizada para almacenar el idioma seleccionado.
- *
- * @author Steveen Cues
- * @version 1.0.0
- */
-export const LANGUAGE_STORAGE_KEY = "app_language";
+import type { TranslateContextType, Language } from "@domain";
 
 /**
  * @description Cantidad de caracteres utilizada para obtener

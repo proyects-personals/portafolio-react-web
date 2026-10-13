@@ -1,5 +1,5 @@
-import { Footer, Header, PageWrapper } from "@presentation";
 import { useTheme } from "@application";
+import { Footer, Header, PageWrapper } from "@presentation";
 
 import type { JSX, ReactNode } from "react";
 

@@ -1,4 +1,4 @@
-import type { Language } from "../../type";
+import type { Language } from "@domain";
 import type { TFunction } from "i18next";
 import type { ReactNode } from "react";
 

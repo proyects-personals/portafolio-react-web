@@ -1,5 +1,6 @@
-import type { JSX } from "react";
 import { AppLayout } from "@presentation";
+
+import type { JSX } from "react";
 
 export default function App(): JSX.Element {
   return (

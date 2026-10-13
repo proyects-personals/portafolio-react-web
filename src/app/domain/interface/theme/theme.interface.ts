@@ -1,4 +1,4 @@
-import type { ThemeName } from "../../type";
+import type { ThemeName } from "@domain";
 import type { ReactNode } from "react";
 
 /**

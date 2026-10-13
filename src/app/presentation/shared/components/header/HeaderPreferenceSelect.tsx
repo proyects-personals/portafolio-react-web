@@ -8,11 +8,10 @@ import {
 } from "react";
 
 import { useClickOutside, useEscapeKey, useLanguage } from "@application";
-
 import {
   HeaderPreferenceDropdown,
   HeaderPreferenceTrigger,
-  type HeaderPreferenceSelectProps,
+  type IHeaderPreferenceSelectProps,
 } from "@presentation";
 
 /**
@@ -35,7 +34,7 @@ export default function HeaderPreferenceSelect<T extends string>({
   onChange,
   ariaLabel,
   compact = false,
-}: HeaderPreferenceSelectProps<T>): JSX.Element {
+}: IHeaderPreferenceSelectProps<T>): JSX.Element {
   const { t } = useLanguage();
 
   const [isOpen, setIsOpen] = useState<boolean>(false);

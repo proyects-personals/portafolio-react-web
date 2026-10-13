@@ -1,10 +1,10 @@
+import { decrypt, encrypt } from "@application";
 import {
   STORAGE_KEY,
   THEME_ENCRYPTION_KEY,
   THEME_NAMES,
   THEMES,
 } from "@domain";
-import { decrypt, encrypt } from "@application";
 
 import type { AppTheme, ThemeName } from "@domain";
 

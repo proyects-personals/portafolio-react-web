@@ -10,10 +10,10 @@ import type { JSX } from "react";
 /**
  * @description Cantidad máxima de opciones antes de habilitar búsqueda.
  */
-const MAX_VISIBLE_OPTIONS = 5;
+const MAX_VISIBLE_OPTIONS = 6;
 
 /**
- * @description Dropdown reutilizable para seleccionar preferencias.
+ * @description Dropdown moderno y reutilizable para seleccionar preferencias.
  *
  * @template T Tipo del valor.
  *
@@ -21,7 +21,7 @@ const MAX_VISIBLE_OPTIONS = 5;
  * @returns {JSX.Element} Dropdown de preferencias.
  *
  * @author Steveen Cues
- * @version 1.0.0
+ * @version 1.1.0 (Modernizado)
  */
 export default function HeaderPreferenceDropdown<T extends string>({
   options,
@@ -45,29 +45,39 @@ export default function HeaderPreferenceDropdown<T extends string>({
         right-0
         top-full
         z-50
-        mt-2
-        w-56
+        mt-3
+        w-64
         overflow-hidden
-        rounded-xl
+        rounded-2xl
         border
       "
       style={{
         backgroundColor: theme.colors.surface.surfaceElevated,
         borderColor: theme.colors.border.default,
-        boxShadow: theme.colors.shadow.medium,
+        boxShadow: theme.colors.shadow.large || theme.colors.shadow.medium,
       }}
     >
       {hasManyOptions && (
-        <HeaderPreferenceSearch
-          value={search}
-          inputRef={inputRef}
-          ariaLabel={ariaLabel}
-          onChange={onSearchChange}
-        />
+        <div
+          className="p-3 border-b"
+          style={{ borderColor: theme.colors.border.default }}
+        >
+          <HeaderPreferenceSearch
+            value={search}
+            inputRef={inputRef}
+            ariaLabel={ariaLabel}
+            onChange={onSearchChange}
+          />
+        </div>
       )}
 
+      {/* Lista de Opciones - Con padding y espaciado entre elementos */}
       <div
-        className={hasManyOptions ? "max-h-60 overflow-y-auto p-1" : "p-1"}
+        className={`
+          p-2 // Padding contenedor interno
+          flex flex-col gap-1 // Espaciado entre opciones
+          ${hasManyOptions ? "max-h-72 overflow-y-auto" : ""}
+        `}
         role="listbox"
       >
         {filteredOptions.length > 0 ? (
@@ -80,14 +90,16 @@ export default function HeaderPreferenceDropdown<T extends string>({
             />
           ))
         ) : (
-          <p
-            className="px-3 py-6 text-center text-sm"
-            style={{
-              color: theme.colors.text.muted,
-            }}
-          >
-            {t("header.preferences.search.noResults")}
-          </p>
+          <div className="flex flex-col items-center justify-center py-10 px-4 text-center">
+            <p
+              className="text-sm font-normal"
+              style={{
+                color: theme.colors.text.muted,
+              }}
+            >
+              {t("header.preferences.search.noResults")}
+            </p>
+          </div>
         )}
       </div>
     </div>

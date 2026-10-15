@@ -1,48 +1,52 @@
 import { useLanguage, useTheme } from "@application";
 
+import type { HeaderRingcolor } from "@presentation";
 import type { JSX } from "react";
 
 /**
- * @description Marca principal del header con identidad visual adaptable al tema.
- *
- * @returns {JSX.Element} Marca del portfolio
- *
+ * @description Renderiza la marca principal de la cabecera con identidad
+ * visual adaptable al tema y diseño responsive optimizado para mostrar el logo y texto completo.
  * @author Steveen Cues
- * @version 1.0.0
+ * @version 1.4.0
  */
 export default function HeaderBrand(): JSX.Element {
   const { t } = useLanguage();
   const { theme } = useTheme();
+  const { colors } = theme;
+
+  const brandStyle: HeaderRingcolor = {
+    "--tw-ring-color": colors.border.focus,
+  };
 
   return (
     <a
       href="#home"
-      className="group flex shrink-0 items-center gap-3"
       aria-label={t("navigation.home")}
+      className="group flex min-w-0 shrink-0 items-center gap-2 rounded-xl transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 sm:gap-3"
+      style={brandStyle}
     >
       <div
         className="
-          flex h-8 w-8 items-center justify-center
-          rounded-full
-          transition-all duration-200
-          group-hover:scale-105
-          group-hover:shadow-lg
+          flex h-8 w-8 shrink-0 items-center justify-center
+          rounded-lg sm:rounded-xl
+          transition-all duration-300 ease-out
+          group-hover:scale-105 group-hover:rotate-3
+          group-active:scale-95
+          sm:h-10 sm:w-10
         "
         style={{
-          backgroundColor: theme.colors.brand.primary,
-          boxShadow: theme.colors.shadow.small,
+          backgroundColor: colors.brand.primary,
+          boxShadow: colors.shadow.medium,
         }}
       >
         <svg
-          className="h-4 w-4 transition-transform duration-200 group-hover:scale-110"
-          style={{
-            color: theme.colors.brand.primaryContrast,
-          }}
+          aria-hidden="true"
+          className="h-4 w-4 transition-transform duration-300 ease-out group-hover:scale-110 sm:h-5 sm:w-5"
+          style={{ color: colors.brand.primaryContrast }}
           fill="none"
           stroke="currentColor"
-          strokeWidth="2.5"
+          strokeWidth={2.5}
           viewBox="0 0 24 24"
-          aria-hidden="true"
         >
           <path
             strokeLinecap="round"
@@ -54,17 +58,15 @@ export default function HeaderBrand(): JSX.Element {
 
       <span
         className="
-          text-base font-bold
-          tracking-tight
+          text-sm font-extrabold
           transition-colors duration-200
+          group-hover:opacity-90
           sm:text-lg
           md:text-xl
         "
-        style={{
-          color: theme.colors.typography.heading.primary,
-        }}
+        style={{ color: colors.typography.heading.primary }}
       >
-        INNOVATECH
+        {t("page.name")}
       </span>
     </a>
   );

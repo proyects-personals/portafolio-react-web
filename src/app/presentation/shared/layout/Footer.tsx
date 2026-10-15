@@ -25,6 +25,11 @@ export default function Footer(): JSX.Element {
         border-t
         md:col-span-8
         lg:col-span-12
+        px-4
+        sm:px-6
+        md:px-8
+        lg:px-10
+        xl:px-12
       "
       style={{
         borderColor: theme.colors.border.default,

@@ -1,9 +1,8 @@
 {
-  "scaffolding": {
-    "page": {
-      "title": "Página",
-      "description": "Página inicial"
-    }
+  "page": {
+    "title": "Página",
+    "description": "Página inicial",
+    "name": "Satoshi Software Solutions"
   },
   "navigation": {
     "main": "Navegación principal",
@@ -20,5 +19,115 @@
     "navigation": "Navegación",
     "connect": "Conecta conmigo",
     "rights": "Todos los derechos reservados."
+  },
+  "hero": {
+    "backgroundVideo": "Fondo multimedia de la presentación principal",
+    "ariaLabel": "Presentación principal",
+    "badge": "Bienvenido a nuestro proyecto",
+    "primaryAction": "Comenzar ahora",
+    "secondaryAction": "Saber más",
+    "previousSlide": "Diapositiva anterior",
+    "nextSlide": "Siguiente diapositiva",
+    "selectSlide": "Seleccionar diapositiva",
+    "showSlide": "Mostrar diapositiva {{number}}",
+    "slides": {
+      "technology": {
+        "title": "Construye el futuro",
+        "highlight": "con tecnología",
+        "description": "Soluciones modernas, rápidas y escalables para llevar tus ideas al siguiente nivel."
+      },
+      "innovation": {
+        "title": "Transforma tus ideas",
+        "highlight": "en experiencias",
+        "description": "Diseñamos productos digitales que conectan personas, innovación y resultados."
+      },
+      "future": {
+        "title": "Innovación sin límites",
+        "highlight": "en movimiento",
+        "description": "Explora nuevas posibilidades con soluciones digitales pensadas para crecer."
+      }
+    }
+  },
+  "services": {
+    "eyebrow": "NUESTROS SERVICIOS",
+    "heading": "Tecnología que impulsa",
+    "headingHighlight": "tu futuro",
+    "intro": "Transformamos desafíos empresariales en soluciones digitales mediante ingeniería de software, innovación y tecnologías modernas.",
+    "heading_unused": "",
+    "web": {
+      "title": "Desarrollo web",
+      "description": "Creamos plataformas web modernas, seguras y escalables adaptadas a las necesidades de tu negocio."
+    },
+    "mobile": {
+      "title": "Desarrollo móvil",
+      "description": "Desarrollamos aplicaciones móviles intuitivas para conectar tus servicios con tus usuarios."
+    },
+    "ai": {
+      "title": "Inteligencia artificial",
+      "description": "Aplicamos inteligencia artificial y análisis de datos para automatizar procesos y descubrir nuevas oportunidades."
+    },
+    "cloud": {
+      "title": "Cloud y DevOps",
+      "description": "Optimizamos infraestructura, integración continua y despliegues para entregar software de manera eficiente."
+    },
+    "ctaHeading": "¿Tienes un proyecto en mente?",
+    "ctaDescription": "Hablemos de tus objetivos y encontremos la solución tecnológica adecuada.",
+    "ctaButton": "Iniciar un proyecto"
+  },
+  "projects": {
+    "eyebrow": "NUESTROS PROYECTOS",
+    "heading": "Ideas convertidas en soluciones digitales",
+    "intro": "Explora ejemplos de productos y soluciones tecnológicas diseñados para resolver necesidades empresariales.",
+    "caseLabel": "SOLUCIÓN DIGITAL",
+    "technologies": "Tecnologías utilizadas",
+    "discussProject": "Hablemos de un proyecto similar",
+    "ctaHeading": "¿Tienes un desafío tecnológico?",
+    "ctaDescription": "Cuéntanos qué necesitas y exploremos juntos cómo convertir tu idea en una solución.",
+    "ctaButton": "Iniciar un proyecto",
+    "platform": {
+      "title": "Plataforma empresarial",
+      "description": "Una aplicación para centralizar operaciones, administrar información y simplificar los procesos de negocio."
+    },
+    "cloud": {
+      "title": "Sistema de gestión cloud",
+      "description": "Una solución web con API y persistencia de datos orientada a mejorar la gestión de procesos empresariales."
+    },
+    "data": {
+      "title": "Plataforma de análisis de datos",
+      "description": "Una solución para procesar datos, identificar tendencias y facilitar la toma de decisiones."
+    }
+  },
+  "technicalSkills": {
+    "eyebrow": "NUESTRAS CAPACIDADES",
+    "heading": "Experiencia técnica para",
+    "headingHighlight": "crear soluciones",
+    "description": "Combinamos tecnologías modernas, buenas prácticas de ingeniería y conocimiento técnico para construir productos digitales escalables.",
+    "technologiesLabel": "Tecnologías de esta categoría",
+    "categories": {
+      "frontend": {
+        "title": "Desarrollo frontend",
+        "description": "Interfaces modernas, accesibles y adaptables a cualquier dispositivo."
+      },
+      "backend": {
+        "title": "Desarrollo backend",
+        "description": "APIs, lógica de negocio y servicios diseñados para ser seguros y mantenibles."
+      },
+      "cloud": {
+        "title": "Cloud y DevOps",
+        "description": "Automatización de despliegues, infraestructura y procesos de entrega continua."
+      },
+      "data": {
+        "title": "Datos e inteligencia artificial",
+        "description": "Procesamiento de datos, analítica y modelos inteligentes para resolver problemas."
+      },
+      "databases": {
+        "title": "Bases de datos",
+        "description": "Diseño, consulta y gestión de datos para aplicaciones empresariales."
+      },
+      "architecture": {
+        "title": "Arquitectura de software",
+        "description": "Diseño modular, mantenibilidad, pruebas y evolución de sistemas."
+      }
+    }
   }
 }

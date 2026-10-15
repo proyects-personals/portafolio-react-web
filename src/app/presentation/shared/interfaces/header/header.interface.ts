@@ -1,4 +1,4 @@
-import type { ChangeEvent, ReactNode, RefObject } from "react";
+import type { ChangeEvent, CSSProperties, ReactNode, RefObject } from "react";
 
 /**
  * @description Propiedades de una opción del selector.
@@ -91,4 +91,8 @@ export interface IHeaderPreferenceDropdownProps<T extends string> {
   ariaLabel: string;
   onSearchChange: (event: ChangeEvent<HTMLInputElement>) => void;
   onSelect: (value: T) => void;
+}
+
+export interface HeaderRingcolor extends CSSProperties {
+  readonly "--tw-ring-color": string;
 }

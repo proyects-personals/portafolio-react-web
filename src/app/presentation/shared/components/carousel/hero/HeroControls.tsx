@@ -3,13 +3,27 @@ import { useLanguage, useTheme } from "@application";
 import type { IHeroControlsProps } from "@presentation";
 import type { JSX } from "react";
 
-const CONTROL_BUTTON_CLASS =
-  "pointer-events-auto absolute top-[58%] sm:top-1/2 flex size-10 sm:size-12 -translate-y-1/2 items-center justify-center rounded-full border opacity-90 sm:opacity-0 sm:group-hover/hero:opacity-100 sm:group-focus-within/hero:opacity-100 shadow-md backdrop-blur-xl transition-all duration-300 ease-out hover:scale-105 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-4 motion-reduce:transition-none";
+const CONTROL_BUTTON_CLASS = `
+  pointer-events-none absolute top-1/2 hidden
+  size-10 -translate-y-1/2 items-center justify-center
+  rounded-full border opacity-0 shadow-md backdrop-blur-xl
+  transition-all duration-300 ease-out
+  hover:scale-105 active:scale-95
+  focus-visible:pointer-events-auto focus-visible:opacity-100
+  focus-visible:outline-2 focus-visible:outline-offset-4
+  md:flex md:size-12
+  md:group-hover/hero:pointer-events-auto
+  md:group-hover/hero:opacity-100
+  md:group-focus-within/hero:pointer-events-auto
+  md:group-focus-within/hero:opacity-100
+  motion-reduce:transition-none
+`;
 
 /**
- * @description Controles de navegación laterales adaptados para evitar colisiones con texto en móvil.
+ * @description Renderiza los controles de navegación del carrusel.
+ * Los controles solo son visibles en escritorio.
  * @author Steveen Cues
- * @version 2.2.0
+ * @version 2.3.0
  */
 export default function HeroControls({
   onPrevious,
@@ -28,7 +42,7 @@ export default function HeroControls({
   };
 
   return (
-    <div className="pointer-events-none absolute inset-0 z-20 overflow-hidden">
+    <div className="pointer-events-none absolute inset-0 z-20">
       <button
         type="button"
         onClick={onPrevious}
@@ -38,11 +52,11 @@ export default function HeroControls({
       >
         <svg
           aria-hidden="true"
-          className="size-4 sm:size-5 shrink-0"
+          className="size-5 shrink-0"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          strokeWidth={2.5}
+          strokeWidth={2}
           strokeLinecap="round"
           strokeLinejoin="round"
         >
@@ -59,11 +73,11 @@ export default function HeroControls({
       >
         <svg
           aria-hidden="true"
-          className="size-4 sm:size-5 shrink-0"
+          className="size-5 shrink-0"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          strokeWidth={2.5}
+          strokeWidth={2}
           strokeLinecap="round"
           strokeLinejoin="round"
         >

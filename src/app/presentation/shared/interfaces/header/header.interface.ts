@@ -96,3 +96,8 @@ export interface IHeaderPreferenceDropdownProps<T extends string> {
 export interface HeaderRingcolor extends CSSProperties {
   readonly "--tw-ring-color": string;
 }
+
+export interface HeroTouchPosition {
+  readonly x: number;
+  readonly y: number;
+}

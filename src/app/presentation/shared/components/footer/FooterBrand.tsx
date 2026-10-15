@@ -3,68 +3,81 @@ import { useLanguage, useTheme } from "@application";
 import type { JSX } from "react";
 
 /**
- * @description Identidad visual del footer.
- *
- * @returns {JSX.Element} Marca del footer
- *
+ * @description Renderiza la identidad visual y la descripción de marca del footer.
+ * @returns {JSX.Element} Identidad visual responsive del footer.
  * @author Steveen Cues
- * @version 1.0.0
+ * @version 2.0.0
  */
 export default function FooterBrand(): JSX.Element {
   const { t } = useLanguage();
   const { theme } = useTheme();
+  const { colors } = theme;
 
   return (
-    <div className="max-w-sm">
+    <div className="w-full min-w-0 max-w-sm">
       <a
         href="#home"
-        className="inline-flex items-center gap-3"
         aria-label={t("navigation.home")}
+        className="group inline-flex max-w-full items-center gap-3 rounded-xl outline-none transition-opacity duration-300 hover:opacity-85 focus-visible:ring-2 focus-visible:ring-offset-4"
+        style={{
+          outlineColor: colors.border.focus,
+        }}
       >
-        <div
-          className="flex h-9 w-9 items-center justify-center rounded-full"
+        <span
+          aria-hidden="true"
+          className="relative flex size-11 shrink-0 items-center justify-center overflow-hidden rounded-2xl transition-transform duration-300 group-hover:scale-105 sm:size-12"
           style={{
-            backgroundColor: theme.colors.brand.primary,
-            boxShadow: theme.colors.shadow.small,
+            background: `linear-gradient(135deg, ${colors.brand.primary}, ${colors.brand.secondary})`,
+            boxShadow: colors.shadow.medium,
           }}
         >
           <svg
-            className="h-4 w-4"
-            style={{
-              color: theme.colors.brand.primaryContrast,
-            }}
+            className="size-5 transition-transform duration-300 group-hover:scale-110 sm:size-6"
+            style={{ color: colors.brand.primaryContrast }}
             fill="none"
             stroke="currentColor"
-            strokeWidth="2.5"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             viewBox="0 0 24 24"
-            aria-hidden="true"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-            />
+            <path d="m8 8-4 4 4 4" />
+            <path d="m16 8 4 4-4 4" />
+            <path d="m14 4-4 16" />
           </svg>
-        </div>
+        </span>
 
-        <span
-          className="text-lg font-bold tracking-tight"
-          style={{
-            color: theme.colors.typography.heading.primary,
-          }}
-        >
-          INNOVATECH
+        <span className="flex min-w-0 flex-col gap-0.5">
+          <span
+            className="truncate text-lg leading-tight font-extrabold tracking-tight sm:text-xl"
+            style={{ color: colors.typography.heading.primary }}
+          >
+            INNOVATECH
+          </span>
+
+          <span
+            className="text-[10px] font-semibold tracking-[0.2em] uppercase sm:text-xs"
+            style={{ color: colors.brand.primary }}
+          >
+            Digital solutions
+          </span>
         </span>
       </a>
 
       <p
-        className="mt-4 text-sm leading-6"
-        style={{
-          color: theme.colors.text.secondary,
-        }}
+        className="mt-4 max-w-sm text-sm leading-6 sm:mt-5 sm:text-[15px]"
+        style={{ color: colors.text.secondary }}
       >
         {t("footer.description")}
       </p>
+
+      <div
+        aria-hidden="true"
+        className="mt-5 h-px w-16 rounded-full transition-all duration-300 group-hover:w-24"
+        style={{
+          background: `linear-gradient(to right, ${colors.brand.primary}, ${colors.brand.secondary})`,
+        }}
+      />
     </div>
   );
 }
